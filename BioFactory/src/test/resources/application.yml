@@ -1,0 +1,29 @@
+spring:
+    data:
+    #数据库连接
+      mongodb:
+        host: 192.168.0.82
+        port: 37018
+        database: bio
+        #uri: mongodb://localhost/bio
+        username: admin
+        password: admin
+        #poolSize: 100
+        #blockSize: 100
+        setParameter: 
+            authenticationMechanisms: MONGODB-CR,SCRAM-SHA-1
+            enableLocalhostAuthBypass: false
+            logLevel: 4
+security:
+    authorization: enabled
+        
+server:
+     port: 8082
+     tomcat:
+#         accessLogEnabled: false
+         max-threads: 60
+         uri-encoding: UTF-8
+exchange:
+    basedirFasta: /soft/java/data/
+    #basedirFasta: D:\BIOSEQUENCE\FASTA\
+    indexPatcnt: 1000

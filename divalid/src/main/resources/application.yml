@@ -1,0 +1,39 @@
+spring:
+    data:
+    #数据库连接
+      mongodb:
+        host: 10.10.1.25
+        port: 27017
+        #uri: mongodb://localhost/bio
+        username: cnipr
+        password: "111111"
+        database: dipatent
+        #authenticationDatabase: dipatent
+        #poolSize: 100
+        #blockSize: 100
+        setParameter: 
+            authenticationMechanisms: SCRAM-SHA-1
+            enableLocalhostAuthBypass: false
+            logLevel: 4
+security:
+    authorization: enabled
+        
+server:
+     port: 8083
+     tomcat:
+#         accessLogEnabled: false
+         max-threads: 60
+         uri-encoding: UTF-8
+di:
+    params: 
+      hybasehost: 10.10.1.16
+      hybaseport: 5555
+      hybaseuser: api
+      hybasepassword: trsapi2015
+      ckmurl: http://10.10.1.17:8060
+      testdatapath: D:\DI\HybaseTest\
+      querydatapath: /soft/java/testquery/
+      #tablename: DATA_PAT_20150901
+      tablename: DATA_PAT_20150901
+      tablename_pat: DATA_20151204_PAT
+      tablename_pat_mongo: patent

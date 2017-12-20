@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+  <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/exporting.js"></script>
+  <script>
+  // highcharts图形配置项
+    var option = {                                                             
+        chart: {                                                                             
+            type: 'scatter',                                                                 
+            zoomType: 'xy'                                                                   
+        },                                                                                   
+        title: {                                                                             
+            text: '聚类接口调用成图'                        
+        },                                                                                   
+        subtitle: {                                                                          
+            text: $("#queryexpr").val()                                                      
+        },                                                                                   
+        xAxis: {                                                                             
+            title: {                                                                         
+                enabled: true,                                                               
+                text: 'X'                                                          
+            },                                                                               
+            startOnTick: true,                                                               
+            endOnTick: true,                                                                 
+            showLastLabel: true                                                              
+        },                                                                                   
+        yAxis: {                                                                             
+            title: {                                                                         
+                text: 'Y'                                                          
+            }                                                                                
+        },                                                                                   
+        legend: {                                                                            
+            layout: 'vertical',                                                              
+            align: 'left',                                                                   
+            verticalAlign: 'top',                                                            
+            x: 100,                                                                          
+            y: 70,                                                                           
+            floating: true,                                                                  
+            backgroundColor: '#FFFFFF',                                                      
+            borderWidth: 1                                                                   
+        },                                                                                   
+        plotOptions: {                                                                       
+            scatter: {                                                                       
+                marker: {                                                                    
+                    radius: 5,                                                               
+                    states: {                                                                
+                        hover: {                                                             
+                            enabled: true,                                                   
+                            lineColor: 'rgb(100,100,100)'                                    
+                        }                                                                    
+                    }                                                                        
+                },                                                                           
+                states: {                                                                    
+                    hover: {                                                                 
+                        marker: {                                                            
+                            enabled: false                                                   
+                        }                                                                    
+                    }                                                                        
+                },                                                                           
+                tooltip: {                                                                   
+                   headerFormat: '<b>{series.name}</b><br>',                                
+                    pointFormat: '<b>{point.id}</b><br>{point.x} , {point.y} '                                
+                }                                                                            
+            }
+            ,series: {
+                cursor: 'pointer',
+                point: {
+                    events: {
+                        click: function () {
+                            //alert('Category: ' + this.category + ', value: ' + this.id);
+                            //$("#patentinfo").text(this.id);
+                            $.getJSON("ckm/jsonpclick?pno="+this.id+"&jsonpCallback=?", function(json){
+                            //$("#patentinfo").text(JSON.stringify(json));
+                            //$("#patentinfo").html("PNO:" + json[0].PNO + "<br><br>TIO:" + json[1].TIO + "<br><br>FTKO:" + json[2].FTKO + "</BR></BR>");
+                            $("#patentinfo").html(JSON.stringify(json,null,4));
+                            //alert(json[1].TIO);
+                            });
+                            
+                        }
+                    }
+                }
+            }
+        },                                                                                   
+        series: 
+[{"name":"计算;控制器;功率;仪表;数据项;","color":null,"data":[{"name":"","id":"CN103946814A","x":518.0,"y":287.0},{"name":"","id":"CN103621028A","x":515.0,"y":291.0},{"name":"","id":"CN103838352A","x":521.0,"y":290.0},{"name":"","id":"CN103995566A","x":522.0,"y":282.0},{"name":"","id":"CN104254840A","x":514.0,"y":285.0},{"name":"","id":"CN103917976A","x":517.0,"y":281.0},{"name":"","id":"CN103827773A","x":517.0,"y":281.0}]},{"name":"计算机;装置;分布式;存储器;内存;数据库;","color":null,"data":[{"name":"","id":"CN103488471A","x":462.0,"y":435.0},{"name":"","id":"CN104137022A","x":489.0,"y":223.0},{"name":"","id":"CN104182304A","x":492.0,"y":447.0},{"name":"","id":"CN103971316A","x":464.0,"y":465.0},{"name":"","id":"CN104009873A","x":483.0,"y":447.0},{"name":"","id":"CN103729249A","x":446.0,"y":414.0},{"name":"","id":"CN104021109A","x":478.0,"y":444.0},{"name":"","id":"CN103534707A","x":486.0,"y":448.0},{"name":"","id":"CN103514346A","x":485.0,"y":447.0},{"name":"","id":"CN103738366A","x":489.0,"y":457.0},{"name":"","id":"CN103868513A","x":478.0,"y":435.0},{"name":"","id":"CN103502904A","x":473.0,"y":420.0},{"name":"","id":"CN103984895A","x":471.0,"y":462.0},{"name":"","id":"CN103984901A","x":469.0,"y":450.0},{"name":"","id":"CN104025512A","x":465.0,"y":465.0},{"name":"","id":"CN104094565A","x":433.0,"y":397.0},{"name":"","id":"CN104166523A","x":596.0,"y":517.0},{"name":"","id":"CN103854203A","x":483.0,"y":437.0},{"name":"","id":"CN103514077A","x":469.0,"y":462.0},{"name":"","id":"CN103513960A","x":488.0,"y":446.0},{"name":"","id":"CN103699454A","x":553.0,"y":404.0},{"name":"","id":"CN103914133A","x":471.0,"y":462.0},{"name":"","id":"CN103814365A","x":472.0,"y":433.0},{"name":"","id":"CN103593145A","x":505.0,"y":465.0},{"name":"","id":"CN103970214A","x":501.0,"y":431.0},{"name":"","id":"CN103842959A","x":431.0,"y":520.0},{"name":"","id":"CN103838307A","x":485.0,"y":435.0},{"name":"","id":"CN104102500A","x":465.0,"y":465.0},{"name":"","id":"CN103853501A","x":521.0,"y":500.0},{"name":"","id":"CN103744754A","x":491.0,"y":441.0},{"name":"","id":"CN103777993A","x":440.0,"y":500.0},{"name":"","id":"CN103782282A","x":465.0,"y":477.0},{"name":"","id":"CN104238719A","x":454.0,"y":416.0},{"name":"","id":"CN104238687A","x":445.0,"y":422.0},{"name":"","id":"CN103810080A","x":475.0,"y":425.0},{"name":"","id":"CN104040569A","x":468.0,"y":419.0},{"name":"","id":"CN103823769A","x":453.0,"y":389.0},{"name":"","id":"CN104143062A","x":462.0,"y":466.0},{"name":"","id":"CN104182243A","x":450.0,"y":460.0},{"name":"","id":"CN104156229A","x":466.0,"y":463.0},{"name":"","id":"CN103995759A","x":471.0,"y":407.0},{"name":"","id":"CN103843452A","x":460.0,"y":482.0},{"name":"","id":"CN103793296A","x":443.0,"y":519.0},{"name":"","id":"CN103559060A","x":460.0,"y":454.0},{"name":"","id":"CN103761173A","x":495.0,"y":451.0},{"name":"","id":"CN103914167A","x":483.0,"y":457.0},{"name":"","id":"CN104111897A","x":496.0,"y":459.0},{"name":"","id":"CN103493049A","x":499.0,"y":445.0},{"name":"","id":"CN103577529A","x":464.0,"y":465.0},{"name":"","id":"CN104077122A","x":463.0,"y":475.0},{"name":"","id":"CN103593208A","x":457.0,"y":420.0},{"name":"","id":"CN103729025A","x":473.0,"y":463.0},{"name":"","id":"CN104160357A","x":460.0,"y":436.0},{"name":"","id":"CN104106237A","x":454.0,"y":463.0},{"name":"","id":"CN104216846A","x":472.0,"y":392.0},{"name":"","id":"CN103605580A","x":498.0,"y":441.0},{"name":"","id":"CN104239000A","x":340.0,"y":249.0},{"name":"","id":"CN103870267A","x":459.0,"y":467.0},{"name":"","id":"CN104040995A","x":349.0,"y":374.0},{"name":"","id":"CN103617104A","x":498.0,"y":439.0},{"name":"","id":"CN103502959A","x":293.0,"y":424.0},{"name":"","id":"CN103907099A","x":477.0,"y":376.0},{"name":"","id":"CN104040635A","x":476.0,"y":463.0},{"name":"","id":"CN103988186A","x":529.0,"y":462.0},{"name":"","id":"CN103917950A","x":460.0,"y":469.0},{"name":"","id":"CN103984601A","x":465.0,"y":479.0},{"name":"","id":"CN103797469A","x":475.0,"y":462.0},{"name":"","id":"CN103838996A","x":469.0,"y":446.0},{"name":"","id":"CN103827774A","x":465.0,"y":462.0},{"name":"","id":"CN103827803A","x":468.0,"y":474.0},{"name":"","id":"CN103778388A","x":468.0,"y":454.0},{"name":"","id":"CN103648599A","x":439.0,"y":430.0},{"name":"","id":"CN103944830A","x":447.0,"y":427.0},{"name":"","id":"CN103814563A","x":487.0,"y":415.0},{"name":"","id":"CN103970574A","x":463.0,"y":454.0},{"name":"","id":"CN104035907A","x":522.0,"y":451.0},{"name":"","id":"CN103562817A","x":484.0,"y":394.0},{"name":"","id":"CN104166608A","x":501.0,"y":423.0},{"name":"","id":"CN103605602A","x":541.0,"y":388.0},{"name":"","id":"CN103513708A","x":177.0,"y":552.0},{"name":"","id":"CN103821747A","x":450.0,"y":424.0},{"name":"","id":"CN104050011A","x":468.0,"y":474.0},{"name":"","id":"CN103744611A","x":419.0,"y":622.0},{"name":"","id":"CN103699372A","x":402.0,"y":389.0},{"name":"","id":"CN103678040A","x":404.0,"y":449.0},{"name":"","id":"CN104137159A","x":491.0,"y":467.0},{"name":"","id":"CN103582877A","x":486.0,"y":259.0},{"name":"","id":"CN104239268A","x":158.0,"y":406.0},{"name":"","id":"CN104238714A","x":505.0,"y":451.0},{"name":"","id":"CN104049712A","x":449.0,"y":425.0},{"name":"","id":"CN103502993A","x":158.0,"y":483.0},{"name":"","id":"CN104010959A","x":491.0,"y":201.0},{"name":"","id":"CN103927203A","x":468.0,"y":414.0},{"name":"","id":"CN103902425A","x":401.0,"y":680.0},{"name":"","id":"CN103902248A","x":311.0,"y":351.0},{"name":"","id":"CN103838656A","x":451.0,"y":423.0},{"name":"","id":"CN103838655A","x":451.0,"y":420.0},{"name":"","id":"CN103827819A","x":451.0,"y":416.0},{"name":"","id":"CN103729305A","x":520.0,"y":484.0},{"name":"","id":"CN103729230A","x":460.0,"y":517.0},{"name":"","id":"CN103514032A","x":469.0,"y":474.0},{"name":"","id":"CN103514029A","x":470.0,"y":474.0},{"name":"","id":"CN103620522A","x":452.0,"y":389.0},{"name":"","id":"CN103605581A","x":390.0,"y":435.0},{"name":"","id":"CN103945911A","x":463.0,"y":454.0},{"name":"","id":"CN104054304A","x":469.0,"y":474.0},{"name":"","id":"CN104025132A","x":469.0,"y":474.0},{"name":"","id":"CN103971038A","x":468.0,"y":414.0},{"name":"","id":"CN104077184A","x":469.0,"y":474.0},{"name":"","id":"CN103999159A","x":508.0,"y":482.0},{"name":"","id":"CN103631593A","x":488.0,"y":431.0},{"name":"","id":"CN104252393A","x":241.0,"y":236.0},{"name":"","id":"CN103543876A","x":511.0,"y":444.0},{"name":"","id":"CN103970248A","x":212.0,"y":617.0},{"name":"","id":"CN104182268A","x":464.0,"y":454.0},{"name":"","id":"CN103927133A","x":503.0,"y":452.0},{"name":"","id":"CN103605592A","x":437.0,"y":486.0},{"name":"","id":"CN104040498A","x":479.0,"y":438.0},{"name":"","id":"CN103592899A","x":480.0,"y":440.0},{"name":"","id":"CN104007998A","x":521.0,"y":453.0},{"name":"","id":"CN104040528A","x":456.0,"y":420.0},{"name":"","id":"CN104217092A","x":480.0,"y":435.0},{"name":"","id":"CN104094272A","x":522.0,"y":449.0},{"name":"","id":"CN103995796A","x":470.0,"y":474.0},{"name":"","id":"CN104090823A","x":336.0,"y":657.0},{"name":"","id":"CN104077202A","x":448.0,"y":426.0},{"name":"","id":"CN104216860A","x":469.0,"y":474.0},{"name":"","id":"CN104216837A","x":462.0,"y":509.0},{"name":"","id":"CN104216496A","x":182.0,"y":321.0},{"name":"","id":"CN103797752A","x":462.0,"y":454.0},{"name":"","id":"CN103649938A","x":463.0,"y":454.0},{"name":"","id":"CN103577362A","x":469.0,"y":474.0},{"name":"","id":"CN103678049A","x":357.0,"y":396.0},{"name":"","id":"CN104137479A","x":431.0,"y":456.0},{"name":"","id":"CN104160363A","x":448.0,"y":426.0},{"name":"","id":"CN103765370A","x":485.0,"y":395.0},{"name":"","id":"CN104205746A","x":448.0,"y":419.0},{"name":"","id":"CN104246776A","x":512.0,"y":445.0},{"name":"","id":"CN104199685A","x":463.0,"y":454.0},{"name":"","id":"CN103529974A","x":637.0,"y":440.0}]}]        
+        };
+  
+    $(function () {
+        $("#btnsearch").click();
+        //$('#container').highcharts(option);                                                                                      
+});                                                                                          				
+    
+  </script>
+</head>
+<body>
+  <input title="输入符合语法的表达式" class="span2" id="queryexpr" name="queryexpr" size="70" type="text" value="TI=计算机系统 AND PDB=CNA0 AND PD=2014">
+  <button class="btn btn-info" id="btnsearch">检 索</button>
+  <div id="container" style="min-width:700px;height:400px"></div>
+  <pre id="patentinfo" ></pre>
+</body>
+<script>
+  $("#btnsearch").click(function(){
+      var query = $("#queryexpr").val();
+      $.getJSON("ckm/jsonp?queryexpr="+query+"&jsonpCallback=?", function(json){
+      //alert("JSON Data: " + json[0].name);
+      option.series = json;
+      option.subtitle.text=query;
+      $('#container').highcharts(option);
+      
+     });
+
+ });
+
+</script>
+</html>

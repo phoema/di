@@ -1,0 +1,27 @@
+security:
+    authorization: enabled
+        
+server:
+     port: 8083
+     tomcat:
+#         accessLogEnabled: false
+         max-threads: 60
+         uri-encoding: UTF-8
+di:
+    params: 
+      hybasehost: 10.10.1.16
+      hybaseport: 5555
+      hybaseuser: api_read
+      hybasepassword: apiread2016
+      ckmurl: http://10.10.1.17:8060
+      testdatapath: D:\DI\HybaseTest\
+      querydatapath: /soft/java/testquery/
+      #tablename: DATA_PAT_20150901
+      tablename: DATA_PAT_20150901
+      tablename_pat: DATA_20151204_PAT
+      tablename_pat_mongo: patent
+      tablename_trade: DATA_20151204_TRA
+      tablename_soft: DATA_20170309_RZW
+      tablename_work: DATA_20170104_RZP
+      
+      

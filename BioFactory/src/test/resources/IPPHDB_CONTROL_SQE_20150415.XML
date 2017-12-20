@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<control type="BIOLOGY" dowork="1">
+  <filelist>
+    <file filename="IPPHDB_SEQ_20150415_0001_INDEX.XML" status="C" section="TXT" sequence="1" md5="BCEA5D1E3A7E016B881262569FB5EFB2" />
+
+    <file filename="IPPHDB_SEQ_20150415_0002_INDEX.XML" status="C" section="TXT" sequence="1" md5="C8C2004D67D18E4423C8FB96E6461DDF" />
+  </filelist>
+</control>

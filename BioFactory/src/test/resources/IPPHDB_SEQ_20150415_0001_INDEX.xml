@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content file="IPPHDB_SEQ_20150415_0001.ZIP" dateExchange="20150415" dateProduced="20150415" patcnt="1" filecnt="1" size="716.5M" md5="993DD7F7211CF278B43FC4B0B624FBD0" status="C">
+
+  <doclist topic="CN_SEQ" country="CN" docNumber="301967775" kind="A" PNO="CN301967775A" PNS="CN301967775S" datePublication="20120627"  Format="FASTA" path="IPPHDB_SEQ_20150415_0001/CN" status="C">
+    <file filename="CN301967775A.txt" filetype="TXT" section="SEQ"/>
+    <seqlist amount="2">
+		<seq id="CN301967775A_000001">
+			<length>729</length>
+			<type>DNA</type>
+			<gn>蚓激酶F-Ⅱ</gn>
+			<og>线粒体</og>
+			<organism>Eisenia fetida</organism>
+			<features>
+				<feature sequence="1">
+						<location>(1)..(324)</location>
+						<keywords>CDS</keywords>
+						<other>AMIDATION</other>
+				</feature>
+				<feature sequence="2">
+						<location>(6)..(732)</location>
+						<keywords>CDS</keywords>
+						<other> 蚓激酶F-Ⅱ全基因DNA</other>
+				</feature>
+			</features>
+		</seq>
+		<seq id="CN301967775A_000002">
+			<length>9</length>
+			<type>PRT</type>
+			<organism>Hepatitis B virus</organism>
+			<features>
+				<feature sequence="1">
+						<location>(1)..(6)</location>
+						<keywords>DISULFID</keywords>
+						<other>缩宫素（催产素；Oxytocin）氨基酸序列</other>
+				</feature>
+				<feature sequence="2">
+						<location>(9)..(9)</location>
+						<keywords>MOD_RES</keywords>
+						<other>AMIDATION</other>
+				</feature>
+			</features>
+		</seq>
+    </seqlist>
+  </doclist>
+</content>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+  
+  <script>
+    $(function () {
+        //$("#btncountry").click();
+        //$('#container').highcharts(option);                                                                                      
+});                                                                                          				
+    
+  </script>
+</head>
+<body>
+ <!--  <input title="输入符合语法的表达式" class="span2" id="queryexpr" name="queryexpr" size="70" type="text" value="TI=计算机系统 AND PDB=CNA0 AND PD=2014"> -->
+  <text id="queryexpr" name="queryexpr" size="70" type="text" value="TI=计算机系统 AND PDB=CNA0 AND PD=2014">统计专利国别</text>
+  <button class="btn btn-info" id="btncountry">统计国别</button>
+  <!--<div id="container" style="min-width:700px;height:400px"></div>-->
+  <pre id="patentinfo" ></pre>
+  <input title="输入指定国家代码" class="span2" id="thiscountry" name="thiscountry" size="10" type="text" value="">
+  <button class="btn btn-info" id="btnpubyear">统计指定国家公开年</button>
+  <button class="btn btn-info" id="btnallpubyear">统计全部国家公开年</button>
+  <pre id="pubyearinfo" ></pre>
+  <input title="输入指定公开年，与上方指定国家联合查询" class="span2" id="thispubyear" name="thispubyear" size="10" type="text" value="">
+  <button class="btn btn-info" id="btncountrypubyear">统计指定国家指定公开年</button>
+  <pre id="pubdayinfo" ></pre>
+</body>
+<script>
+
+var countryinfo ;
+  $("#btncountry").click(function(){
+      //var query = $("#queryexpr").val();
+      $.get("mongo/group?groupkey=docInfo.pdb", function(json){
+      //alert("JSON Data: " + json[0].name);
+      countryinfo = json;
+      $('#patentinfo').html(JSON.stringify(json,null,4));
+      
+     });
+
+ });
+//公开年
+  $("#btnpubyear").click(function(){
+	  var url = "mongo/group?groupkey=docInfo.py";
+	  var pdb = $("#thiscountry").val();
+	  if(pdb!=""){
+		  url += "&searchkey=docInfo.pdb&searchvalue="+ pdb;
+	  }
+      //var query = $("#queryexpr").val();
+      $.get(url, function(json){
+      //alert("JSON Data: " + json[0].name);
+      $('#pubyearinfo').html(JSON.stringify(json,null,4));
+      
+     });
+
+ });
+ 
+
+  $("#btnallpubyear").click(function(){
+	  var info = "";
+	  var url = "mongo/group?groupkey=docInfo.py";
+	  for(var index in countryinfo){
+		  //info += (index+"-"+countryinfo[index]);
+
+		  var pdb = countryinfo[index].docInfo.pdb;
+
+		  $.ajax({ 
+		       type: "get", 
+		       url: url + "&searchkey=docInfo.pdb&searchvalue=" + pdb, 
+		       cache:false, 
+		       async:false, 
+		       contentType : "application/json; charset=utf-8",
+		       dataType : "json",
+		       //dataType: ($.browser.msie) ? "text" : "xml", 
+		       success: function(json){ 
+					  info += index + "<br>";
+					  info += JSON.stringify(json,null,4);
+					  info += "<br>";
+					  $('#pubyearinfo').html(info);
+		        } 
+
+		});
+      }
+ });
+
+  $("#btncountrypubyear").click(function(){
+	  var url = "mongo/group?groupkey=docInfo.pd";
+	  var pdb = $("#thiscountry").val();
+	  var year = $("#thispubyear").val();
+	  if($("#thiscountry").val()!=""){
+		  url += "&searchkey=docInfo.pdb;docInfo.py&searchvalue=" + pdb+";"+year;
+	  }
+      //var query = $("#queryexpr").val();
+      $.get(url, function(json){
+      //alert("JSON Data: " + json[0].name);
+      $('#pubdayinfo').html(JSON.stringify(json,null,4));
+      
+     });
+ });
+
+
+</script>
+</html>
